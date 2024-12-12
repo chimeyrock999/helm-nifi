@@ -184,10 +184,10 @@ spec:
 {{- end }}
 
 {{ if .Values.customFlow }}
-          gzip < {{ .Values.customFlow }} > /opt/nifi/data/flow.xml.gz
+          gzip < {{ .Values.customFlow }} > /opt/nifi/data/flow.json.gz
 {{ else }}
-          if ! test -f /opt/nifi/data/flow.xml.gz && test -f /opt/nifi/data/flow.xml; then
-            gzip /opt/nifi/data/flow.xml
+          if ! test -f /opt/nifi/data/flow.json.gz && test -f /opt/nifi/data/flow.json; then
+            gzip /opt/nifi/data/flow.json
           fi
 {{ end }}
 
@@ -525,8 +525,8 @@ spec:
             mountPath: /opt/nifi/nifi-current/conf/zookeeper.properties
             subPath: "zookeeper.properties"
           - name: "flow-content"
-            mountPath: /opt/nifi/data/flow.xml
-            subPath: "flow.xml"
+            mountPath: /opt/nifi/data/flow.json
+            subPath: "flow.json"
           {{- range $secret := .Values.secrets }}
             {{- if $secret.mountPath }}
               {{- if $secret.keys }}
@@ -796,8 +796,8 @@ spec:
         configMap:
           name: {{ template "apache-nifi.fullname" . }}-config
           items:
-            - key: "flow.xml"
-              path: "flow.xml"
+            - key: "flow.json"
+              path: "flow.json"
 {{- if .Values.certManager.enabled }}
       - name: secret-reader-token
         secret:
