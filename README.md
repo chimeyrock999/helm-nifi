@@ -1,16 +1,8 @@
 # Helm Chart for Apache NiFi
 
-[![CircleCI](https://circleci.com/gh/cetic/helm-nifi.svg?style=svg)](https://circleci.com/gh/cetic/helm-nifi/tree/master) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![version](https://img.shields.io/github/tag/cetic/helm-nifi.svg?label=release) ![test](https://github.com/cetic/helm-nifi/actions/workflows/test.yml/badge.svg)
-
-## $${\color{red}Maintainers \space Wanted}$$
-
-$${\color{red}This \space project \space is \space not \space maintained \space anymore.}$$
-
-If you are interested in maintaining a fork of this project, please chime in in the [dedicated issue](https://github.com/cetic/helm-nifi/issues/330).
-
 ## Introduction
 
-This [Helm](https://helm.sh/) chart installs [Apache NiFi](https://nifi.apache.org/) 1.23.2 in a [Kubernetes](https://kubernetes.io/) cluster.
+This [Helm](https://helm.sh/) chart installs [Apache NiFi](https://nifi.apache.org/) 2.0.0 in a [Kubernetes](https://kubernetes.io/) cluster.
 
 ## Prerequisites
 
@@ -20,11 +12,11 @@ This [Helm](https://helm.sh/) chart installs [Apache NiFi](https://nifi.apache.o
 
 ## Installation
 
-### Add Helm repository
+### Install the chart
 
 ```bash
-helm repo add cetic https://cetic.github.io/helm-charts
-helm repo update
+git pull https://github.com/chimeyrock999/helm-nifi
+helm install . --name nifi
 ```
 
 ### Configure the chart
@@ -130,6 +122,7 @@ The following table lists the configurable parameters of the nifi chart and the 
 | `properties.sensitiveKeyPrior`                                              | Prior `sensitiveKey` when updating via `sensitiveKeySetFile` mechanism                                             | `nil`                           |
 | `properties.externalSecure`                                                 | externalSecure for when inbound SSL                                                                                | `false`                         |
 | `properties.isNode`                                                         | cluster node properties (only configure for cluster nodes)                                                         | `false`                          |
+| `properties.clusterStateProvider`                                                         |   `zk-provider` or `kubernetes-provider`, state provider for cluster                                                     | `zk-provider`                          |
 | `properties.httpPort`                                                       | web properties HTTP port                                                                                           | `8080`                          |
 | `properties.httpsPort`                                                      | web properties HTTPS port                                                                                          | `null`                          |
 | `properties.clusterPort`                                                    | cluster node port                                                                                                  | `6007`                          |

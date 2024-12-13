@@ -113,7 +113,7 @@ properties:
     nifi.web.http.network.interface.default: eth0
     # listen to loopback interface so "kubectl port-forward ..." works
     nifi.web.http.network.interface.lo: lo
-  clusterStateProvider: kubernetes-provider
+  clusterStateProvider: zk-provider
 
   ## Include aditional processors
   # customLibPath: "/opt/configuration_resources/custom_lib"
