@@ -16,7 +16,8 @@ This [Helm](https://helm.sh/) chart installs [Apache NiFi](https://nifi.apache.o
 
 ```bash
 git pull https://github.com/chimeyrock999/helm-nifi
-helm install . --name nifi
+cd helm-nifi
+helm install . --name my-release
 ```
 
 ### Configure the chart
